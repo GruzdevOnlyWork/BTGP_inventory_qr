@@ -56,26 +56,26 @@ const EquipmentDetails = () => {
     <div className="flex justify-center p-6">
       <Card className="w-full max-w-2xl mx-auto mt-6 shadow-lg">
         <CardHeader className="flex" >
-          <CardTitle className="text-xl font-semibold">{equipment.name} </CardTitle>
+          <CardTitle className="text-xl font-semibold">{equipment.name}</CardTitle>
           <p className="text-lg">{equipment.model || 'Не указана'}</p>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Тип</p>
-              <p className="text-lg">{equipment.type}</p>
+              <p className="text-lg break-all">{equipment.type}</p>
             </div>
             <div className="p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Местоположение</p>
-              <p className="text-lg">{equipment.location}</p>
+              <p className="text-lg break-all">{equipment.location}</p>
             </div>
             <div className="p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Статус</p>
-              <p className="text-lg">{equipment.status}</p>
+              <p className="text-lg break-all">{equipment.status}</p>
             </div>
             <div className="p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Серийный номер</p>
-              <p className="text-lg">{equipment.serialNumber || 'Не указан'}</p>
+              <p className="text-lg break-all">{equipment.serialNumber || 'Не указан'}</p>
             </div>
 
             <div className="col-span-2 p-4 border rounded-md bg-gray-50">
@@ -88,7 +88,7 @@ const EquipmentDetails = () => {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-end gap-2">
+        <CardFooter className="flex flex-wrap justify-end gap-2"> 
           <Button variant="outline" onClick={() => window.print()}>QR</Button>
           <Button variant="outline" onClick={() => setIsEditModalOpen(true)}>Редактировать</Button>
           <Button variant="outline" className="bg-red-500 text-white hover:bg-red-600" onClick={handleDelete}>
