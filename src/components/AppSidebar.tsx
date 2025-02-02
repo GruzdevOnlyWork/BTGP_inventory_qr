@@ -10,6 +10,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database"; 
 import { realtimeDb } from '@/firebase';
@@ -108,7 +109,7 @@ export function AppSidebar({ onAddEquipment, onFilterChange }) {
                 </Select>
               </SidebarMenuItem>
 
-              <SidebarMenuItem>
+              <SidebarMenuItem >
                 <Select onValueChange={handleStatusChange} value={selectedStatus}>
                   <SelectTrigger>
                     <SelectValue placeholder="Выберите статус" />
@@ -120,6 +121,7 @@ export function AppSidebar({ onAddEquipment, onFilterChange }) {
                     ))}
                   </SelectContent>
                 </Select>
+                <Button variant="outline" className="w-full  px-4 py-2 mt-3 " onClick={() => window.print()}>Распечатать все QR коды</Button>
               </SidebarMenuItem>
 
             </SidebarMenu>

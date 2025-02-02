@@ -9,6 +9,7 @@ interface Equipment {
   type: string;
   location: string;
   status: string;
+  model?: string;
 }
 
 interface EquipmentCardProps {
@@ -17,6 +18,7 @@ interface EquipmentCardProps {
 
 export const EquipmentCard = ({ equipment }: EquipmentCardProps) => {
   const NameKey = import.meta.env.VITE_HOSTING_NAME;
+
   const getStatusColor = (status: Equipment["status"]) => {
     switch (status) {
       case "В использовании":
@@ -27,6 +29,8 @@ export const EquipmentCard = ({ equipment }: EquipmentCardProps) => {
         return "bg-yellow-100 text-yellow-800";
       case "Вышел из строя":
         return "bg-red-100 text-red-800";
+      default:
+        return "";
     }
   };
 
@@ -34,7 +38,10 @@ export const EquipmentCard = ({ equipment }: EquipmentCardProps) => {
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <span>{equipment.name}</span>
+          <div>
+            <span>{equipment.name}</span>
+            <p className="text-sm text-gray-500">{equipment.model|| 'Нет модели'}</p>
+          </div>
           <span className={`text-sm px-2 py-1 rounded-full ${getStatusColor(equipment.status)}`}>
             {equipment.status}
           </span>
@@ -49,14 +56,14 @@ export const EquipmentCard = ({ equipment }: EquipmentCardProps) => {
           <p className="text-sm text-gray-500">Локация</p>
           <p>{equipment.location}</p>
         </div>
+        
         <div className="col-span-2 flex justify-center">
           <QRCodeSVG value={`https://${NameKey}/equipment/${equipment.id}`} size={128} />
         </div>
       </CardContent>
       <CardFooter className="flex justify-end gap-2">
-        <Button variant="outline" onClick={() => window.print()}>QR</Button>
         <Link to={`/equipment/${equipment.id}`}>
-              <Button  className="primary">Подробнее</Button>
+          <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 primary col-span-2">Подробнее</Button>
         </Link>
       </CardFooter>
     </Card>

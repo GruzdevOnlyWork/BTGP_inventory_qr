@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { QRCodeSVG } from "qrcode.react"; 
@@ -53,51 +53,57 @@ const EquipmentDetails = () => {
   if (error) return <div className="text-red-500">{error}</div>; 
 
   return (
-    <div className="flex">
-      <div className="flex-1 p-6">
-        <Card className="w-full max-w-2xl mx-auto mt-6">
-          <CardHeader>
-            <CardTitle>{equipment.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-gray-500">Тип</p>
-                <p>{equipment.type}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">Местоположение</p>
-                <p>{equipment.location}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">Статус</p>
-                <p>{equipment.status}</p>
-              </div>
-              <div className="col-span-2">
-                <p className="text-sm text-gray-500">Описание</p>
-                <p>{equipment.description}</p>
-              </div>
-              <div className="col-span-2 flex justify-center">
-                <QRCodeSVG value={`https://${NameKey}/equipment/${id}`} size={128} />
-              </div>
+    <div className="flex justify-center p-6">
+      <Card className="w-full max-w-2xl mx-auto mt-6 shadow-lg">
+        <CardHeader className="flex" >
+          <CardTitle className="text-xl font-semibold">{equipment.name} </CardTitle>
+          <p className="text-lg">{equipment.model || 'Не указана'}</p>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-md bg-gray-50">
+              <p className="text-sm font-medium text-gray-600">Тип</p>
+              <p className="text-lg">{equipment.type}</p>
             </div>
-          </CardContent>
-          <CardFooter className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setIsEditModalOpen(true)}>Редактировать</Button>
-            <Button variant="outline" className="bg-red-500 text-white hover:bg-red-600" onClick={handleDelete}>
-              Удалить
-            </Button>
-          </CardFooter>
-        </Card>
+            <div className="p-4 border rounded-md bg-gray-50">
+              <p className="text-sm font-medium text-gray-600">Местоположение</p>
+              <p className="text-lg">{equipment.location}</p>
+            </div>
+            <div className="p-4 border rounded-md bg-gray-50">
+              <p className="text-sm font-medium text-gray-600">Статус</p>
+              <p className="text-lg">{equipment.status}</p>
+            </div>
+            <div className="p-4 border rounded-md bg-gray-50">
+              <p className="text-sm font-medium text-gray-600">Серийный номер</p>
+              <p className="text-lg">{equipment.serialNumber || 'Не указан'}</p>
+            </div>
 
-        {isEditModalOpen && (
-          <EquipmentModal 
-            isOpen={isEditModalOpen} 
-            onClose={() => setIsEditModalOpen(false)} 
-            equipment={equipment} 
-          />
-        )}
-      </div>
+            <div className="col-span-2 p-4 border rounded-md bg-gray-50">
+              <p className="text-sm font-medium text-gray-600">Описание</p>
+              <p className="break-all">{equipment.description || 'Нет описания'}</p> 
+            </div>
+
+            <div className="col-span-2 flex justify-center">
+              <QRCodeSVG value={`https://${NameKey}/equipment/${id}`} size={128} />
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-end gap-2">
+          <Button variant="outline" onClick={() => window.print()}>QR</Button>
+          <Button variant="outline" onClick={() => setIsEditModalOpen(true)}>Редактировать</Button>
+          <Button variant="outline" className="bg-red-500 text-white hover:bg-red-600" onClick={handleDelete}>
+            Удалить
+          </Button>
+        </CardFooter>
+      </Card>
+
+      {isEditModalOpen && (
+        <EquipmentModal 
+          isOpen={isEditModalOpen} 
+          onClose={() => setIsEditModalOpen(false)} 
+          equipment={equipment} 
+        />
+      )}
     </div>
   );
 };

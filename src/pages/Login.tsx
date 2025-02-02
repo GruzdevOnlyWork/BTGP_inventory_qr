@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; 
-import Cookies from 'js-cookie';
 
 const Login: React.FC = () => {
   const [key, setKey] = useState('');
@@ -9,10 +8,9 @@ const Login: React.FC = () => {
   
   const { login, isAuthenticated } = useAuth();
 
-  // Проверка состояния авторизации при загрузке компонента
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/home'); // Перенаправление на главную страницу
+      navigate('/home');
     }
   }, [isAuthenticated, navigate]);
 
