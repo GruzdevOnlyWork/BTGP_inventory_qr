@@ -13,7 +13,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Проверка состояния аутентификации при загрузке
     const isAuth = Cookies.get('isAuthenticated');
     if (isAuth) {
       setIsAuthenticated(true);
