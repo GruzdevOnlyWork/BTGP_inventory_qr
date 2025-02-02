@@ -60,20 +60,20 @@ const EquipmentDetails = () => {
           <p className="text-lg">{equipment.model || 'Не указана'}</p>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-md bg-gray-50">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="col-span-2 p-4 border rounded-md bg-gray-50 " >
               <p className="text-sm font-medium text-gray-600">Тип</p>
               <p className="text-lg break-all">{equipment.type}</p>
             </div>
-            <div className="p-4 border rounded-md bg-gray-50">
+            <div className="col-span-2 p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Местоположение</p>
               <p className="text-lg break-all">{equipment.location}</p>
             </div>
-            <div className="p-4 border rounded-md bg-gray-50">
+            <div className="col-span-2 p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Статус</p>
               <p className="text-lg break-all">{equipment.status}</p>
             </div>
-            <div className="p-4 border rounded-md bg-gray-50">
+            <div className="col-span-2 p-4 border rounded-md bg-gray-50">
               <p className="text-sm font-medium text-gray-600">Серийный номер</p>
               <p className="text-lg break-all">{equipment.serialNumber || 'Не указан'}</p>
             </div>
