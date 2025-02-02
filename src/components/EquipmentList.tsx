@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { realtimeDb } from '@/firebase'; 
 import { ref, onValue } from 'firebase/database'; 
-import { EquipmentCard } from './EquipmentCard'; 
+import {EquipmentCard} from './EquipmentCard'; 
+import AddEquipmentModal from './AddEquipmentModal';
+import { Plus } from 'lucide-react'; 
 
 interface Equipment {
   id: string;
@@ -9,8 +11,6 @@ interface Equipment {
   type: string;
   location: string;
   status: string;
-  qrCode?: string;
-  qrCodeImage?: string;
 }
 
 interface EquipmentListProps {
@@ -23,6 +23,8 @@ export const EquipmentList: React.FC<EquipmentListProps> = ({ filterType, filter
   const [filteredEquipment, setFilteredEquipment] = useState<Equipment[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [error, setError] = useState<string | null>(null);
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   useEffect(() => {
     const equipmentRef = ref(realtimeDb, 'equipment'); 
@@ -69,23 +71,8 @@ export const EquipmentList: React.FC<EquipmentListProps> = ({ filterType, filter
     return <div className="text-red-500">{error}</div>;
   }
 
-  if (filteredEquipment.length === 0) {
-    return <div>
-              <div className="flex items-center justify-between">
-                    <h2 className="text-3xl font-bold">Список оборудования</h2>
-                    <input
-                      className="max-w-xs border p-2 rounded"
-                      placeholder="Поиск оборудования..."
-                      type="search"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-              </div>
-            </div>;
-  }
-
   return (
-    <div className="space-y-6">
+    <>
       <div className="flex items-center justify-between">
         <h2 className="text-3xl font-bold">Список оборудования</h2>
         <input 
@@ -96,20 +83,32 @@ export const EquipmentList: React.FC<EquipmentListProps> = ({ filterType, filter
           onChange={(e) => setSearchTerm(e.target.value)} 
         />
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredEquipment.length > 0 ? (
           filteredEquipment.map((equipment) => (
             <div key={equipment.id} className="border p-4 rounded shadow-md">
               <EquipmentCard equipment={equipment} />
-              {equipment.qrCodeImage && (
-                <img src={equipment.qrCodeImage} alt={`QR Code for ${equipment.name}`} className="mt-2" />
-              )}
             </div>
           ))
         ) : (
-            <div>Нет доступного оборудования по выбранным критериям.</div>
+          <div>Нет доступного оборудования по выбранным критериям.</div>
         )}
+        
+        <div className="border p-4 rounded shadow-md flex items-center justify-center cursor-pointer" onClick={() => setIsAddModalOpen(true)}>
+          <Plus className="h-6 w-6 mr-2" />
+          Добавить оборудование
+        </div>
       </div>
-    </div>
+
+      {isAddModalOpen && (
+        <AddEquipmentModal 
+          isOpen={isAddModalOpen} 
+          onClose={() => setIsAddModalOpen(false)} 
+        />
+      )}
+    </>
   );
 };
+
+export default EquipmentList;
