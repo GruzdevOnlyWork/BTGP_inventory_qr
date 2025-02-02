@@ -42,11 +42,11 @@ export const EquipmentCard = ({ equipment }: EquipmentCardProps) => {
       </CardHeader>
       <CardContent className="grid grid-cols-2 gap-4">
         <div>
-          <p className="text-sm text-gray-500">Type</p>
+          <p className="text-sm text-gray-500">Тип</p>
           <p>{equipment.type}</p>
         </div>
         <div>
-          <p className="text-sm text-gray-500">Location</p>
+          <p className="text-sm text-gray-500">Локация</p>
           <p>{equipment.location}</p>
         </div>
         <div className="col-span-2 flex justify-center">
@@ -54,9 +54,9 @@ export const EquipmentCard = ({ equipment }: EquipmentCardProps) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-end gap-2">
-        <Button variant="outline" onClick={() => window.print()}>Print QR</Button>
+        <Button variant="outline" onClick={() => window.print()}>QR</Button>
         <Link to={`/equipment/${equipment.id}`}>
-              <Button  className="primary">View Details</Button>
+              <Button  className="primary">Подробнее</Button>
         </Link>
       </CardFooter>
     </Card>
