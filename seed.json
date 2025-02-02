@@ -1,0 +1,93 @@
+{
+  "equipment": [
+    {
+      "id": "654",
+      "name": "Laptop Dell XPS",
+      "type": "Computer",
+      "location": "Office 101",
+      "status": "available",
+      "qrCode": "https://yourapp.com/equipment/EQ001",
+      "qrCodeImage": "https://api.qrserver.com/v1/create-qr-code/?data=https://yourapp.com/equipment/EQ001&size=150x150"
+    },
+    {
+      "id": "123",
+      "name": "Projector HD",
+      "type": "Presentation",
+      "location": "Conference Room A",
+      "status": "in-use",
+      "qrCode": "https://yourapp.com/equipment/EQ002",
+      "qrCodeImage": "https://api.qrserver.com/v1/create-qr-code/?data=https://yourapp.com/equipment/EQ002&size=150x150"
+    },
+    {
+      "id": "321",
+      "name": "Printer HP",
+      "type": "Peripheral",
+      "location": "Office 102",
+      "status": "maintenance",
+      "qrCode": "https://yourapp.com/equipment/EQ003",
+      "qrCodeImage": "https://api.qrserver.com/v1/create-qr-code/?data=https://yourapp.com/equipment/EQ003&size=150x150"
+    },
+    {
+      "id": "444",
+      "name": "Smartphone Samsung Galaxy S21",
+      "type": "Computer",
+      "location": "Office 103",
+      "status": "available",
+      "qrCode": "https://yourapp.com/equipment/EQ004",
+      "qrCodeImage": "https://api.qrserver.com/v1/create-qr-code/?data=https://yourapp.com/equipment/EQ004&size=150x150"
+    },
+    {
+      "id": "EQ005",
+      "name": "Tablet Apple iPad Pro",
+      "type": "Computer",
+      "location": "Office 104",
+      "status": "in-use",
+      "qrCode": "https://yourapp.com/equipment/EQ005",
+      "qrCodeImage": "https://api.qrserver.com/v1/create-qr-code/?data=https://yourapp.com/equipment/EQ005&size=150x150"
+    }
+  ],
+  "equipmentTypes": [
+    {
+      "id": "type1",
+      "name": "Компьютер"
+    },
+    {
+      "id": "type2",
+      "name": "Проектор"
+    },
+    {
+      "id": "type3",
+      "name": "Переферия"
+    },
+    {
+      "id": "type4",
+      "name": "Роутер/Коммутатор"
+    },
+    {
+      "id": "type5",
+      "name": "Принтер"
+    },
+    {
+      "id": "type6",
+      "name": "Сканер"
+    }
+  ],
+  "equipmentStatuses": [
+    {
+      "id": "status1",
+      "name": "В ремонте"
+    },
+    {
+      "id": "status2",
+      "name": "В использовании"
+    },
+    {
+      "id": "status3",
+      "name": "На поддержании"
+    },
+    {
+      "id": "status4",
+      "name": "Вышел из строя"
+    }
+  ]
+}
