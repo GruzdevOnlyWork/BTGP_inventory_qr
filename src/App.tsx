@@ -22,7 +22,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<PrivateRoute element={<Index />} />} />
-            <Route path="/equipment/:id" element={<EquipmentDetails />}/>
+            <Route path="/equipment/:id" element={<PrivateRoute element={<EquipmentDetails />} />}/>   
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

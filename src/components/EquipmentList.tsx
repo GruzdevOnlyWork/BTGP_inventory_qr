@@ -84,7 +84,7 @@ export const EquipmentList: React.FC<EquipmentListProps> = ({ filterType, filter
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
         {filteredEquipment.length > 0 ? (
           filteredEquipment.map((equipment) => (
             <div key={equipment.id} className="border p-4 rounded shadow-md">

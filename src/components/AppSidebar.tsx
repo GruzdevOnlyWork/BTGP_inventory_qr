@@ -16,7 +16,7 @@ import { ref, onValue } from "firebase/database";
 import { realtimeDb } from '@/firebase';
 
 const items = [
-  { title: "Equipment List", icon: List, url: "#list" },
+  { title: "Менеджер оборудования", icon: List, url: "#list" },
 ];
 
 export function AppSidebar({ onAddEquipment, onFilterChange }) {
@@ -72,7 +72,7 @@ export function AppSidebar({ onAddEquipment, onFilterChange }) {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Equipment Manager</SidebarGroupLabel>
+          <SidebarGroupLabel>Менеджер оборудования</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

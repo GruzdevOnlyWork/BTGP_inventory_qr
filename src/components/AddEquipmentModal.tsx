@@ -184,11 +184,11 @@ return (
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="serialNumber">Серийный номер</Label>
+                <Label htmlFor="serialNumber">Инвентаризационный номер</Label>
                 <Input 
                   id="serialNumber" 
                   type="number"
-                  placeholder="Введите серийный номер"
+                  placeholder="Введите Инвентаризационный номер"
                   value={serialNumber}
                   onChange={(e) => {
                     const value = e.target.value;
