@@ -221,7 +221,7 @@ return (
 
             </div>
 
-            <Button type="submit" className="w-full">Сохранить изменения</Button>
+            <Button type="submit" className="w-full">Добавить</Button>
           </form>
           <Button onClick={onClose} className="mt-4">Закрыть</Button> 
         </CardContent>
